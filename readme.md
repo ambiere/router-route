@@ -9,7 +9,7 @@ organized route structure.
 
 ## Features
 
-- Custom Route map
+- Custom Route map<br/>
 Define your routes using a custom map with parent-child references.
 
 ```ts
@@ -24,13 +24,13 @@ interface RouteMap {
 }
 ```
 
-- Automatic Conversion
+- Automatic Conversion<br/>
 Effortlessly convert the custom route map into a standard route object for use with `createBrowserRouter` API.
 
-- Simplified management
+- Simplified management<br/>
 Easily manage and organize complex route hierarchies with reference keys.
 
-- Recursive Building
+- Recursive Building<br/>
 Recursively constructs the route tree, linking parent routes to their respective children.
 
 
@@ -77,19 +77,19 @@ createBrowserRouter(rrRouteObject, options)
 ## API
 
 - `RrRoute(routeMap: RouteMap): RrRoute`
--- rr-route class
+  - rr-route class
 
--- Parameters:
--- `routeMap` (Object): The custom route map containing `parents` and `childrens` arrays.
+  - Parameters:
+    - `routeMap` (Object): The custom route map containing `parents` and `childrens` arrays.
 
--- Returns:
--- Instance of `RrRoute` containing `routeObject` method
+  - Returns:
+    - Instance of `RrRoute` containing `routeObject` method
 
 - `routeObject(): RouteObject[]`
--- Converts custom route map into a standard route object.
+  - Converts custom route map into a standard route object.
 
--- Returns:
--- A standard route object compatible with react-router's `createBrowserRouter` API/method.
+  - Returns:
+    - A standard route object compatible with react-router's `createBrowserRouter` API/method.
 
 ## License
 
