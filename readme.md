@@ -9,7 +9,7 @@ organized route structure.
 
 ## Features
 
-- Custom Route map<br/>
+###  Custom Route map
 Define your routes using a custom map with parent-child references.
 
 ```ts
@@ -24,13 +24,13 @@ interface RouteMap {
 }
 ```
 
-- Automatic Conversion<br/>
+### Automatic Conversion
 Effortlessly convert the custom route map into a standard route object for use with `createBrowserRouter` API.
 
-- Simplified management<br/>
+### Simplified management
 Easily manage and organize complex route hierarchies with reference keys.
 
-- Recursive Building<br/>
+### Recursive Building
 Recursively constructs the route tree, linking parent routes to their respective children.
 
 
@@ -80,7 +80,7 @@ createBrowserRouter(rrRouteObject, options)
   - rr-route class
 
   - Parameters:
-    - `routeMap` (Object): The custom route map containing `parents` and `childrens` arrays.
+    - `routeMap` (Object):<br/> The custom route map containing `parents` and `childrens` arrays.
 
   - Returns:
     - Instance of `RrRoute` containing `routeObject` method
