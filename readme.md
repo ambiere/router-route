@@ -1,4 +1,4 @@
-# rr-route
+# rr-route [![CI](https://github.com/ambiere/rr-route/actions/workflows/main.yml/badge.svg)](https://github.com/ambiere/rr-route/actions/workflows/main.yml)
 
 > Utility package designed to simplify the process of defining routes in `react-router`.
 
@@ -68,7 +68,7 @@ const router = createBrowserRouter(rrRouteObject, options)
 ## API
 
 #### `RrRoute(routeMap: RouteMap): RrRoute`
-RrRoute class. Accept `routeMap` argument, a custom route map containing `parents` and `childrens` arrays and 
+RrRoute class. Accept `routeMap` argument, a custom route map containing `parents` and `childrens` arrays and
 returns an instance of `RrRoute` containing `routeObject` method.
 
 #### `routeObject(): RouteObject[]`
