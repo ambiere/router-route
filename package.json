@@ -1,0 +1,42 @@
+{
+  "name": "rr-route",
+  "version": "0.0.1",
+  "description": "Write organized complex route hierarchies for React-router",
+  "main": "./src/index.js",
+  "type": "module",
+  "types": "./src/index.d.ts",
+  "exports": {
+    "types": "./src/index.d.ts",
+    "default": "./src/index.js"
+  },
+  "scripts": {
+    "test": "standard --fix && vitest"
+  },
+  "files": [
+    "./src/index.js",
+    "./src/index.d.ts"
+  ],
+  "keywords": [
+    "router",
+    "react",
+    "object",
+    "util"
+  ],
+  "author": {
+    "name": "Zidikhery Mchomvu",
+    "email": "itsambiere@gmail.com"
+  },
+  "license": "MIT",
+  "repository": "ambiere/rr-route",
+  "bugs": {
+    "url": "https://github.com/ambiere/rr-route/issues"
+  },
+  "homepage": "https://github.com/ambiere/rr-route#readme",
+  "dependencies": {
+    "react-router": "^6.23.1"
+  },
+  "devDependencies": {
+    "standard": "^17.1.0",
+    "vitest": "^1.6.0"
+  }
+}
