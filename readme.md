@@ -9,13 +9,11 @@ organized route structure.
 
 ## Features
 
-###  Custom Route map
-Define your routes using a custom map with parent-child references.
+1. **Custom Route map**: Define your routes using a custom map with parent-child references.
 
 ```ts
 interface Parent extends Omit<RouteObject, "children"> {
-  /** Reference key to children routes*/
-  childrenRef?: string | number
+  childrenRef?: string | number /** Reference key to children routes*/
 }
 
 interface RouteMap {
@@ -23,16 +21,9 @@ interface RouteMap {
   childrens: Record<string | number, RouteMap>
 }
 ```
-
-### Automatic Conversion
-Effortlessly convert the custom route map into a standard route object for use with `createBrowserRouter` API.
-
-### Simplified management
-Easily manage and organize complex route hierarchies with reference keys.
-
-### Recursive Building
-Recursively constructs the route tree, linking parent routes to their respective children.
-
+2. **Automatic Conversion**: Effortlessly convert the custom route map into a standard route object for use with `createBrowserRouter` API.
+3. **Simplified management**: Easily manage and organize complex route hierarchies with reference keys.
+4. **Recursive Building**: Recursively constructs the route tree, linking parent routes to their respective children.
 
 ## Installation
 
@@ -71,25 +62,17 @@ const routeMap = {
 const rrRoute = new RrRoute(routeMap)
 const rrRouteObject = rrRoute.routeObject()
 
-createBrowserRouter(rrRouteObject, options)
+const router = createBrowserRouter(rrRouteObject, options)
 ```
 
 ## API
 
-- `RrRoute(routeMap: RouteMap): RrRoute`
-  - rr-route class
+#### `RrRoute(routeMap: RouteMap): RrRoute`
+RrRoute class. Accept `routeMap` argument, a custom route map containing `parents` and `childrens` arrays and 
+returns an instance of `RrRoute` containing `routeObject` method.
 
-  - Parameters:
-    - `routeMap` (Object):<br/> The custom route map containing `parents` and `childrens` arrays.
-
-  - Returns:
-    - Instance of `RrRoute` containing `routeObject` method
-
-- `routeObject(): RouteObject[]`
-  - Converts custom route map into a standard route object.
-
-  - Returns:
-    - A standard route object compatible with react-router's `createBrowserRouter` API/method.
+#### `routeObject(): RouteObject[]`
+Converts custom route map into a standard route object and returns a standard route object compatible with react-router's `createBrowserRouter` API/method.
 
 ## License
 
