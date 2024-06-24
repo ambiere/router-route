@@ -3,7 +3,7 @@
  * @type {import(".").default}
  * */
 export default class RrRoute {
-  constructor (routeMap) {
+  constructor(routeMap) {
     this.routeMap = routeMap
   }
 
@@ -12,8 +12,8 @@ export default class RrRoute {
    * @param {import(".").Parent} parent
    * @returns {Omit<Parent, "childrenRef"}
    * */
-  #copyRouteParent (parent) {
-    const parentCopy = structuredClone(parent)
+  #copyRouteParent(parent) {
+    const parentCopy = { ...parent }
     delete parentCopy.childrenRef
     return parentCopy
   }
@@ -23,7 +23,7 @@ export default class RrRoute {
    * @param {import(".").ChildMap} childMap
    * @returns {import(".").RouteObject[]}
    * */
-  #readChildMap (childMap) {
+  #readChildMap(childMap) {
     const childRouteObject = []
     childMap.parents.forEach(parent => {
       const children = this.#childRoute(parent, childMap)
@@ -43,13 +43,13 @@ export default class RrRoute {
    * @param {import(".").RouteMap} [rootParent=this.routeMap]
    * @returns {Record<string, import(".").RouteObject[] | unknown>}
    * */
-  #childRoute (parent, rootParent = this.routeMap) {
+  #childRoute(parent, rootParent = this.routeMap) {
     const childrenRef = parent.childrenRef ?? ''
     const children = () => this.#readChildMap(rootParent.childrens[childrenRef])
     return parent.childrenRef
       ? {
-          children: children()
-        }
+        children: children()
+      }
       : {}
   }
 
@@ -57,7 +57,7 @@ export default class RrRoute {
    * Return route object compatible with `createBrowserRouter` API/method of react-router
    * @returns {import(".").RouteObject[]}
    * */
-  routeObject () {
+  routeObject() {
     const routeObject = []
     this.routeMap.parents.forEach(parent => {
       const children = this.#childRoute(parent)
