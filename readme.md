@@ -40,10 +40,12 @@ import RrRoute from "@ambiere/rr-route"
 const routeMap = {
   parents: [
     {
-      element: <RootLayout />,
-      errorElement: <RootError />,
-      childrenRef: '_rootChildRef' /** Reference key to its child route*/
-    }
+      element: '<h1>RootLayout </h1>',
+      errorElement: '<h1>Error occured :/</h1>',
+      childrenRef: '_rootChildRef'
+    },
+    /** Support modularization for parents */
+    booksRouteModule
   ],
 
   childrens: {
@@ -54,7 +56,10 @@ const routeMap = {
           element: <Home />,
         }
       ],
-      childrens: {} /** Children of RootLayout's children (if any)*/
+      childrens: { /** Children of RootLayout's children (if any)*/
+        /** Support modularization for childrens */
+        _accountChildRef: usersRouteModule
+      }
     }
   }
 }
