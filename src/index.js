@@ -1,10 +1,57 @@
 /**
+ * Create standard route object
+ * from `rr-route` custom route map
  * @class
  * @type {import(".").default}
  * */
 export default class RrRoute {
   constructor(routeMap) {
-    this.routeMap = routeMap
+    this.routeMap = this.#formatRouteMap(routeMap)
+  }
+
+  /**
+   * Format routeMap to required format
+   * (`RouteMap`) if .parent contains route modules
+   * @param {import(".").RouteMap} routeMap
+   * @returns {import('.').Parent}
+   * */
+  #formatRouteMap(routeMap) {
+    const routeMapFmt = {
+      parents: [],
+      childrens: routeMap.childrens
+    }
+
+    let x = 0
+
+    while (x < routeMap.parents.length) {
+      const route = routeMap.parents[x]
+      if (this.#isRouteModule(route)) {
+        route.parents.map(parent => {
+          const ref = parent.childrenRef
+          if (ref) {
+            const childrens = routeMapFmt.childrens
+            Object.defineProperty(childrens, ref, {
+              value: route.childrens[ref],
+              enumerable: true
+            })
+          }
+          return routeMapFmt.parents.push(parent)
+        })
+      } else { routeMapFmt.parents.push(route) }
+      x++
+    }
+    return routeMapFmt
+  }
+
+  /**
+   * Check if the route is a module
+   * @param {import("./").RouteMap} route
+   * */
+  #isRouteModule(route) {
+    return Boolean(
+      (route.parents && route.parents.length) ||
+      route.childrens
+    )
   }
 
   /**
@@ -45,16 +92,17 @@ export default class RrRoute {
    * */
   #childRoute(parent, rootParent = this.routeMap) {
     const childrenRef = parent.childrenRef ?? ''
-    const children = () => this.#readChildMap(rootParent.childrens[childrenRef])
-    return parent.childrenRef
-      ? {
-        children: children()
-      }
-      : {}
+    const children = () => {
+      const childrens = rootParent.childrens[childrenRef]
+      const fmtChildMap = this.#formatRouteMap(childrens)
+      return this.#readChildMap(fmtChildMap)
+    }
+    return parent.childrenRef ? { children: children() } : {}
   }
 
   /**
-   * Return route object compatible with `createBrowserRouter` API/method of react-router
+   * Return route object compatible with
+   * `createBrowserRouter` API/method of react-router
    * @returns {import(".").RouteObject[]}
    * */
   routeObject() {
