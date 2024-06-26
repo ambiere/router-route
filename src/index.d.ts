@@ -18,6 +18,8 @@ declare class RrRoute {
   private routeMap: RouteMap
   constructor(routeMap: RouteMap)
   private copyRouteParent(parent: Parent): Omit<Parent, "childrenRef">
+  private isRouteModule(route: RouteMap): boolean
+  private formatRouteMap(routeMap: RouteMap): Parent
   private readChildMap(childMap: ChildMap): RouteObject[]
   private childRoute(parent: Parent, rootParent?: RouteMap): Record<string, RouteObject[] | unknown>
   /** Return route object compatible with `createBrowserRouter` API/method of react-router*/

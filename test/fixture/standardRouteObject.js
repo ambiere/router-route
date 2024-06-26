@@ -4,32 +4,46 @@ export default [
     errorElement: '<h1>Error occured :/</h1>',
     children: [
       {
-        path: '/',
-        element: '<h1>App </h1>'
-      },
-      {
         path: 'authors',
-        element: '<h1>Authors </h1>',
+        element: '<Authors />',
+        loader: 'authorsDataLoader',
         children: [
           {
             path: 'add-author',
-            element: '<h1>AddAuthor </h1>'
-          },
-          {
-            path: ':name/settings',
-            element: '<h1>EditAuthor </h1>'
+            element: '<AddAuthor />',
+            action: 'addAuthorAction'
           }
         ]
       },
       {
-        path: 'books',
-        element: '<h1>Books </h1>',
+        path: 'account',
+        element: '<Account />',
+        loader: 'accountDataLoader',
         children: [
           {
-            path: 'add-book',
-            element: '<h1>AddBook </h1>'
+            path: 'user/:userId',
+            element: '<User />',
+            loader: 'userDataLoader',
+            children: [
+              {
+                path: 'profile',
+                element: '<Profile />'
+              }
+            ]
           }
         ]
+      }
+    ]
+  },
+  {
+    path: 'books',
+    element: '<Books />',
+    loader: 'booksDataLoader',
+    children: [
+      {
+        path: 'add-book',
+        element: '<AddBook />',
+        action: 'addBookAction'
       }
     ]
   }

@@ -1,3 +1,4 @@
+// import fs from 'node:fs'
 import { test, assert } from 'vitest'
 import RrRoute from '../src/index.js'
 import customRouteObject from './fixture/customRouteObject'
@@ -9,7 +10,7 @@ const it = test.extend({
 })
 
 it('should parse custom route object to a react-router compatible route object',
-  function testRrRoute ({ routeMap, routeObject }) {
+  function testRrRoute({ routeMap, routeObject }) {
     const rrRoute = new RrRoute(routeMap)
     const rrRouteObject = rrRoute.routeObject()
 
