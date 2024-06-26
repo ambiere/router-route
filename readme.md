@@ -40,8 +40,8 @@ import RrRoute from "@ambiere/rr-route"
 const routeMap = {
   parents: [
     {
-      element: '<h1>RootLayout </h1>',
-      errorElement: '<h1>Error occured :/</h1>',
+      element: <RootLayout />,
+      errorElement: <RootError />,
       childrenRef: '_rootChildRef'
     },
     /** Support modularization for parents */
