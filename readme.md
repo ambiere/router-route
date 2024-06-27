@@ -72,11 +72,11 @@ const router = createBrowserRouter(routerRouteObject, options)
 
 ## API
 
-#### `RouterRoute(routeMap: RouteMap): RouterRoute`
+#### 1. `RouterRoute(routeMap: RouteMap): RouterRoute`
 RouterRoute class. Accept `routeMap` argument, a custom route map containing `parents` and `childrens` arrays and
 returns an instance of `RouterRoute` containing `routeObject` method.
 
-#### `routeObject(): RouteObject[]`
+#### 2. `routeObject(): RouteObject[]`
 Converts custom route map into a standard route object and returns a standard route object compatible with react-router's `createBrowserRouter` API/method.
 
 ## License
