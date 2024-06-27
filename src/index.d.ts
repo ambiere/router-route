@@ -14,7 +14,7 @@ export interface RouteMap {
   childrens: Record<string | number, RouteMap>
 }
 
-declare class RrRoute {
+declare class RouterRoute {
   private routeMap: RouteMap
   constructor(routeMap: RouteMap)
   private copyRouteParent(parent: Parent): Omit<Parent, "childrenRef">
@@ -26,4 +26,4 @@ declare class RrRoute {
   routeObject(): RouteObject[]
 }
 
-export default RrRoute
+export default RouterRoute
