@@ -4,8 +4,8 @@
  * @class
  * @type {import(".").default}
  * */
-export default class RrRoute {
-  constructor(routeMap) {
+export default class RouterRoute {
+  constructor (routeMap) {
     this.routeMap = this.#formatRouteMap(routeMap)
   }
 
@@ -15,7 +15,7 @@ export default class RrRoute {
    * @param {import(".").RouteMap} routeMap
    * @returns {import('.').Parent}
    * */
-  #formatRouteMap(routeMap) {
+  #formatRouteMap (routeMap) {
     const routeMapFmt = {
       parents: [],
       childrens: routeMap.childrens
@@ -47,7 +47,7 @@ export default class RrRoute {
    * Check if the route is a module
    * @param {import("./").RouteMap} route
    * */
-  #isRouteModule(route) {
+  #isRouteModule (route) {
     return Boolean(
       (route.parents && route.parents.length) ||
       route.childrens
@@ -59,7 +59,7 @@ export default class RrRoute {
    * @param {import(".").Parent} parent
    * @returns {Omit<Parent, "childrenRef"}
    * */
-  #copyRouteParent(parent) {
+  #copyRouteParent (parent) {
     const parentCopy = { ...parent }
     delete parentCopy.childrenRef
     return parentCopy
@@ -70,7 +70,7 @@ export default class RrRoute {
    * @param {import(".").ChildMap} childMap
    * @returns {import(".").RouteObject[]}
    * */
-  #readChildMap(childMap) {
+  #readChildMap (childMap) {
     const childRouteObject = []
     childMap.parents.forEach(parent => {
       const children = this.#childRoute(parent, childMap)
@@ -90,7 +90,7 @@ export default class RrRoute {
    * @param {import(".").RouteMap} [rootParent=this.routeMap]
    * @returns {Record<string, import(".").RouteObject[] | unknown>}
    * */
-  #childRoute(parent, rootParent = this.routeMap) {
+  #childRoute (parent, rootParent = this.routeMap) {
     const childrenRef = parent.childrenRef ?? ''
     const children = () => {
       const childrens = rootParent.childrens[childrenRef]
@@ -105,7 +105,7 @@ export default class RrRoute {
    * `createBrowserRouter` API/method of react-router
    * @returns {import(".").RouteObject[]}
    * */
-  routeObject() {
+  routeObject () {
     const routeObject = []
     this.routeMap.parents.forEach(parent => {
       const children = this.#childRoute(parent)
