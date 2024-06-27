@@ -27,11 +27,11 @@
     "email": "itsambiere@gmail.com"
   },
   "license": "MIT",
-  "repository": "ambiere/rr-route",
+  "repository": "ambiere/router-route",
   "bugs": {
-    "url": "https://github.com/ambiere/rr-route/issues"
+    "url": "https://github.com/ambiere/router-route/issues"
   },
-  "homepage": "https://github.com/ambiere/rr-route#readme",
+  "homepage": "https://github.com/ambiere/router-route#readme",
   "dependencies": {
     "react-router": "^6.23.1"
   },
