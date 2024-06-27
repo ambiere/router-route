@@ -1,5 +1,5 @@
 {
-  "name": "@ambiere/rr-route",
+  "name": "@ambiere/router-route",
   "version": "0.1.0",
   "description": "Write organized complex route hierarchies for React-router",
   "main": "./src/index.js",
